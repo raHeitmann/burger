@@ -23,9 +23,13 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-  burger.create("burger_name", req.body.name, function() {
+  burger.create({
+    burger_name: req.body.name},
+    function() {
+    
     res.redirect("/");
   });
+
 });
 
 router.put("/:id", function(req, res) {
@@ -34,7 +38,7 @@ router.put("/:id", function(req, res) {
   console.log("condition", condition);
 
   burger.update({
-    devoured: req.body.devoured
+    devoured: 1
   }, condition, function() {
     res.redirect("/");
   });
